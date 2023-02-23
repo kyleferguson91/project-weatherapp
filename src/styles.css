@@ -1,0 +1,15 @@
+:root {
+--lightgreen: lightgreen;
+}
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    background-color: var(--lightgreen);
+}
+
