@@ -1,10 +1,10 @@
-
+console.log('pee223')
 // this function runs the initial domLogic, that which renders the page!!
 
 async function domLogic() {
 
 
-    // once we import module, do something with it!
+    // once we import sdmodule, do something with it!
     let dom = await import('./modules/domLogic.js')
 
 // call the function to render the page initially!
@@ -94,7 +94,7 @@ catch(err) {
 console.log('RUN FUNCTION TO GET WEATHER AND POST FORECAST AS WELL')
 //importWeather('latlong', '43.3668', '-80.9497')
 //importWeather('search', 'TORONTO', 'CA')
-importWeather('postal', 'N4Z', 'CA')
+// importWeather('postal', 'N4Z', 'CA')
 
 
 // we will run import weather when we need weather!

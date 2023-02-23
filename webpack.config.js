@@ -2,15 +2,16 @@ const path = require('path');
 
 module.exports = {
     mode: 'development',
-  entry: './src/script.js',
+  entry: '../src/script.js',
   output: {
-  
+
 
     filename: 'main.js',
     path: path.resolve(__dirname, 'docs'),
   },
   module: {
     rules: [
+
 
      {
 

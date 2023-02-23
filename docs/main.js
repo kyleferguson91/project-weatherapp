@@ -15,7 +15,7 @@
   \***********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("\r\n// this function runs the initial domLogic, that which renders the page!!\r\n\r\nasync function domLogic() {\r\n\r\n\r\n    // once we import module, do something with it!\r\n    let dom = await __webpack_require__.e(/*! import() */ \"src_modules_domLogic_js\").then(__webpack_require__.t.bind(__webpack_require__, /*! ./modules/domLogic.js */ \"./src/modules/domLogic.js\", 23))\r\n\r\n// call the function to render the page initially!\r\n    dom.initialRender()\r\n}\r\n\r\ndomLogic()\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n// this function will import the module that gets the weather data from the api and returns response.json()\r\n// this function will then extract that data into variables\r\n// once we have those variables, we can call dom logic, etc\r\n\r\nasync function importWeather(type, ...args) {\r\ntry {\r\n    \r\n\r\n    // wait for the weather module to import\r\nlet weather = await __webpack_require__.e(/*! import() */ \"src_modules_getweatherfromapi_js\").then(__webpack_require__.bind(__webpack_require__, /*! ./modules/getweatherfromapi.js */ \"./src/modules/getweatherfromapi.js\"))\r\n\r\n// once we have module can run the get weather function with the relevant type and the params..\r\n// since it is async we must await the response\r\n\r\nlet weatherResponse = await weather.getWeather(type, ...args)\r\n\r\n// it returns a resolved promise with the response of the weather object\r\n// log the object which can be filtered for the data we want\r\n\r\n\r\n// filter the data below\r\n// create the data we need\r\nconst city = weatherResponse.name\r\nconst lat = weatherResponse.coord.lat\r\nconst lon = weatherResponse.coord.lon\r\nconst weathertypemain = weatherResponse.weather[0].main\r\nconst weatherdescription = weatherResponse.weather[0].description\r\nconst tempfeelslike = weatherResponse.main.feels_like\r\nconst temp = weatherResponse.main.temp\r\nconst temphigh = weatherResponse.main.temp_max\r\nconst templow = weatherResponse.main.temp_min\r\nconst humidity = weatherResponse.main.humidity\r\nconst rainchance = ''\r\nconst windspeed = weatherResponse.wind.speed\r\n\r\nconsole.log(city, weathertypemain,weatherdescription, tempfeelslike, temp,temphigh,templow,humidity,rainchance, windspeed)\r\n\r\n\r\n\r\n\r\n// we can also call the function to populate the five day forecast data for us\r\n// as we have the lat and long from above\r\nconst forecast = await weather.getForecast(lat,lon)\r\n\r\n\r\n\r\nconsole.log('FIVE DAY FORECAST BELOW')\r\n\r\nfor  (let index of forecast.list) {\r\nconsole.log('index')\r\n}\r\n\r\n}\r\n\r\n// catch an error in importWeather async function\r\ncatch(err) {\r\n    console.log('error in importWeather', err)\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n}\r\n\r\n\r\nconsole.log('RUN FUNCTION TO GET WEATHER AND POST FORECAST AS WELL')\r\n//importWeather('latlong', '43.3668', '-80.9497')\r\n//importWeather('search', 'TORONTO', 'CA')\r\nimportWeather('postal', 'N4Z', 'CA')\r\n\r\n\r\n// we will run import weather when we need weather!\n\n//# sourceURL=webpack://project-weatherapp/./src/script.js?");
+eval("console.log('pee223')\r\n// this function runs the initial domLogic, that which renders the page!!\r\n\r\nasync function domLogic() {\r\n\r\n\r\n    // once we import sdmodule, do something with it!\r\n    let dom = await __webpack_require__.e(/*! import() */ \"src_modules_domLogic_js\").then(__webpack_require__.bind(__webpack_require__, /*! ./modules/domLogic.js */ \"./src/modules/domLogic.js\"))\r\n\r\n// call the function to render the page initially!\r\n    dom.initialRender()\r\n}\r\n\r\ndomLogic()\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n// this function will import the module that gets the weather data from the api and returns response.json()\r\n// this function will then extract that data into variables\r\n// once we have those variables, we can call dom logic, etc\r\n\r\nasync function importWeather(type, ...args) {\r\ntry {\r\n    \r\n\r\n    // wait for the weather module to import\r\nlet weather = await __webpack_require__.e(/*! import() */ \"src_modules_getweatherfromapi_js\").then(__webpack_require__.bind(__webpack_require__, /*! ./modules/getweatherfromapi.js */ \"./src/modules/getweatherfromapi.js\"))\r\n\r\n// once we have module can run the get weather function with the relevant type and the params..\r\n// since it is async we must await the response\r\n\r\nlet weatherResponse = await weather.getWeather(type, ...args)\r\n\r\n// it returns a resolved promise with the response of the weather object\r\n// log the object which can be filtered for the data we want\r\n\r\n\r\n// filter the data below\r\n// create the data we need\r\nconst city = weatherResponse.name\r\nconst lat = weatherResponse.coord.lat\r\nconst lon = weatherResponse.coord.lon\r\nconst weathertypemain = weatherResponse.weather[0].main\r\nconst weatherdescription = weatherResponse.weather[0].description\r\nconst tempfeelslike = weatherResponse.main.feels_like\r\nconst temp = weatherResponse.main.temp\r\nconst temphigh = weatherResponse.main.temp_max\r\nconst templow = weatherResponse.main.temp_min\r\nconst humidity = weatherResponse.main.humidity\r\nconst rainchance = ''\r\nconst windspeed = weatherResponse.wind.speed\r\n\r\nconsole.log(city, weathertypemain,weatherdescription, tempfeelslike, temp,temphigh,templow,humidity,rainchance, windspeed)\r\n\r\n\r\n\r\n\r\n// we can also call the function to populate the five day forecast data for us\r\n// as we have the lat and long from above\r\nconst forecast = await weather.getForecast(lat,lon)\r\n\r\n\r\n\r\nconsole.log('FIVE DAY FORECAST BELOW')\r\n\r\nfor  (let index of forecast.list) {\r\nconsole.log('index')\r\n}\r\n\r\n}\r\n\r\n// catch an error in importWeather async function\r\ncatch(err) {\r\n    console.log('error in importWeather', err)\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n}\r\n\r\n\r\nconsole.log('RUN FUNCTION TO GET WEATHER AND POST FORECAST AS WELL')\r\n//importWeather('latlong', '43.3668', '-80.9497')\r\n//importWeather('search', 'TORONTO', 'CA')\r\n// importWeather('postal', 'N4Z', 'CA')\r\n\r\n\r\n// we will run import weather when we need weather!\n\n//# sourceURL=webpack://project-weatherapp/./src/script.js?");
 
 /***/ })
 
@@ -49,36 +49,6 @@ eval("\r\n// this function runs the initial domLogic, that which renders the pag
 /******/ 	__webpack_require__.m = __webpack_modules__;
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/create fake namespace object */
-/******/ 	(() => {
-/******/ 		var getProto = Object.getPrototypeOf ? (obj) => (Object.getPrototypeOf(obj)) : (obj) => (obj.__proto__);
-/******/ 		var leafPrototypes;
-/******/ 		// create a fake namespace object
-/******/ 		// mode & 1: value is a module id, require it
-/******/ 		// mode & 2: merge all properties of value into the ns
-/******/ 		// mode & 4: return value when already ns object
-/******/ 		// mode & 16: return value when it's Promise-like
-/******/ 		// mode & 8|1: behave like require
-/******/ 		__webpack_require__.t = function(value, mode) {
-/******/ 			if(mode & 1) value = this(value);
-/******/ 			if(mode & 8) return value;
-/******/ 			if(typeof value === 'object' && value) {
-/******/ 				if((mode & 4) && value.__esModule) return value;
-/******/ 				if((mode & 16) && typeof value.then === 'function') return value;
-/******/ 			}
-/******/ 			var ns = Object.create(null);
-/******/ 			__webpack_require__.r(ns);
-/******/ 			var def = {};
-/******/ 			leafPrototypes = leafPrototypes || [null, getProto({}), getProto([]), getProto(getProto)];
-/******/ 			for(var current = mode & 2 && value; typeof current == 'object' && !~leafPrototypes.indexOf(current); current = getProto(current)) {
-/******/ 				Object.getOwnPropertyNames(current).forEach((key) => (def[key] = () => (value[key])));
-/******/ 			}
-/******/ 			def['default'] = () => (value);
-/******/ 			__webpack_require__.d(ns, def);
-/******/ 			return ns;
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -111,6 +81,18 @@ eval("\r\n// this function runs the initial domLogic, that which renders the pag
 /******/ 			// return url for filenames based on template
 /******/ 			return "" + chunkId + ".main.js";
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
@@ -176,7 +158,22 @@ eval("\r\n// this function runs the initial domLogic, that which renders the pag
 /******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
-/******/ 		__webpack_require__.p = "";
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
