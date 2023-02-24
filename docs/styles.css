@@ -445,7 +445,16 @@ height: 100%;
 .fivedayforecast{
 flex-flow: row;
 flex-wrap: wrap;
-background-color: rgba(0, 0, 0, 0.5);
+
+}
+
+.todaysweather {
+
+    backdrop-filter: blur(0);
+}
+
+.dayholder {
+    background-color: none;
 }
 .fivedayforecast > *
  {
