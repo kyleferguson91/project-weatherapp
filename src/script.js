@@ -1,5 +1,5 @@
 
-
+import { compareAsc, format } from 'date-fns'
 // this function runs the initial domLogic, that which renders the page!!
 
 async function domLogic() {
@@ -68,60 +68,69 @@ let weatherResponse = await weather.getWeather(type, ...args)
 
 // filter the data below
 // create the data we need
+// use an object so its easy!
 
-const city = weatherResponse.name
-const lat = weatherResponse.coord.lat
-const lon = weatherResponse.coord.lon
+let weatherObject = 
+{
 
-const tempfeelslike = weatherResponse.main.feels_like
-const temp = weatherResponse.main.temp
-const temphigh = weatherResponse.main.temp_max
-const templow = weatherResponse.main.temp_min
-const humidity = weatherResponse.main.humidity
-const rainchance = ''
-const windspeed = weatherResponse.wind.speed
+city:  weatherResponse.name,
+lat : weatherResponse.coord.lat,
+lon : weatherResponse.coord.lon,
+tempfeelslike: weatherResponse.main.feels_like,
+temp: weatherResponse.main.temp,
+temphigh: weatherResponse.main.temp_max,
+templow: weatherResponse.main.temp_min,
+humidity: weatherResponse.main.humidity,
+rainchance: '',
+windspeed: weatherResponse.wind.speed,
+today: format(new Date(), 'MMMM, dd, yyyy'),
+multipleicons: [],
+multipleconditions: [],
+multipledescriptions: [],
+icon: '',
+weathertypemain: '',
+weatherdescription: '',
+country: weatherResponse.sys.country == "CA" ? 'Canada' : 'United States',
+}
 
-const today = new Date()
+
 
 
 
 
 // create a loop to check for relevant weather icons and conditions!
-let multipleconditions, multipledescriptions,maincondition, icon, multipleicons,weathertypemain,weatherdescription
-multipleicons = []
-multipleconditions = []
-multipledescriptions = []
+
 // condition if only one weather condition
 
-if (weatherResponse.weather.length > 1) {
-    console.log('cond length 1',   weatherResponse.weather[0]
-    )
+if (weatherResponse.weather.length == 1) {
+   
 
-    icon = weatherResponse.weather[0].icon
-     weathertypemain = weatherResponse.weather[0].main
- weatherdescription = weatherResponse.weather[0].description
+    weatherObject.icon = weatherResponse.weather[0].icon
+    weatherObject.weathertypemain = weatherResponse.weather[0].main
+    weatherObject.weatherdescription = weatherResponse.weather[0].description
 }
 
-else if (weatherResponse.weather.length == 1) {
+else if (weatherResponse.weather.length > 1) {
 
    
 
-    // for all additional items.. 
+
 
     for (let item of weatherResponse.weather) {
 
         if (weatherResponse.weather.indexOf(item) == 0) {
              // set the main weather and description to first object and icon
-    icon = item.icon
-    weathertypemain = item.main
-    weatherdescription = item.description
+             weatherObject.icon = item.icon
+             weatherObject.weathertypemain = item.main
+             weatherObject.weatherdescription = item.description
     console.log(item, 'item')
         }
 
+            // for all additional items.. push to arrays!
         else {
-            multipleicons.push(item.icon)
-            multipleconditions.push(item.main)
-            multipledescriptions.push(item.description)
+            weatherObject.multipleicons.push(item.icon)
+            weatherObject.multipleconditions.push(item.main)
+            weatherObject.multipledescriptions.push(item.description)
     }
 
     }
@@ -129,28 +138,30 @@ else if (weatherResponse.weather.length == 1) {
 }
 
 //icon now holds the correct code for the image we need!
-
-
-// conditions and icons log
-console.log('conds icons', icon, weathertypemain, weatherdescription, multipleconditions, multipledescriptions, multipleicons)
+console.log(weatherResponse)
+console.log(weatherObject)
 
 
 // log the data here
+// conditions and icons log
+console.log('conds icons', weatherObject.today)
 
-console.log(city, weathertypemain,weatherdescription, tempfeelslike, temp,temphigh,templow,humidity,rainchance, windspeed, today)
+
+
 
 
 // we can also call the function to populate the five day forecast data for us
 // as we have the lat and long from above
-const forecast = await weather.getForecast(lat,lon)
+const forecast = await weather.getForecast(weatherObject.lat,weatherObject.lon)
 
 
 
 console.log('FIVE DAY FORECAST BELOW')
+console.log(forecast)
+let forecastObject = forecast.list
 
-for  (let index of forecast.list) {
-console.log('index')
-}
+
+
 
 
 
@@ -159,7 +170,7 @@ console.log('index')
 
 const dom = await import('../src/modules/domLogic.js')
 
-dom.initialRender(today, weatherdescription)
+dom.initialRender(weatherObject, forecastObject)
 
 
 }

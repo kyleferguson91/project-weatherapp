@@ -5,35 +5,143 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>weatherApp</title>
+    <link rel="icon" type="image/x-icon" href="./icons8-weather.svg">
     <link rel="stylesheet" href="./styles.css">
     <script type='' src="./main.js" ></script>
 </head>
 <body>
             
-    <form class="searchform" action="">
-        <label for="searcher">Enter a city and country!</label>
-        <input type="text" name="" id="searcher">
-        <select name="" id="">
-            <option value="CA">CA</option>
-            <option value="US">US</option>
-        </select>
-        <button type="submit" id="submitbutton">Submit</button>
-    </form>
 
 
     <div class="weatherbox">
         <div class="todaysweather">
-            <p class="title">Today's Weather</p>
-            <p class="typeweather"></p>
-            <p class="city"></p>
-            <p class="date">Date</p>
+            <div class="todaybox">
+                <p class="todaytitle">Today's Weather</p>
+                     <p class="date">Date</p>
+                <p class="city"></p>
+            </div>
+       
+          <div class="detailbox">      
+
+           <div class="infobox">
+
+            <div class="imagebox">
+                <p>Conditions</p>
+                <img src="" alt="weatherimage" class="mainweatherimage">
+               
+            </div>
+            <p class="descriptionofweather"></p>
+
+
+            <div class="imagebox">
+                <p>Temperature</p>
+                <img src="" class="thermometer detailimg" alt="thermometerimage">
+            </div>
+
+
+            <p class="currenttemp"></p>
+
+
+            <div class="imagebox">
+                <p>Humidity</p>
+                <img src="" class="moisture detailimg" alt="moistureimg">
+            </div>
+
+
+            <p class="humidity"></p>
+
+           </div>
+
+           <div class="infobox">
+
+            <div class="imagebox">
+                <p>Temp Low</p>
+                <img src="" alt="weatherimage" class="lowtempimage detailimg">
+               
+            </div>
+            <p class="lowtemptext"></p>
+
+
+            <div class="imagebox">
+                <p>Feels Like</p>
+                <img src="" class="feelslike detailimg" alt="feelslikeimage">
+            </div>
+
+
+            <p class="feelsliketext"></p>
+
+
+            <div class="imagebox">
+                <p class="">Wind Speed</p>
+                <img src="" class="windspeed detailimg" alt="windspeedimage">
+            </div>
+            <p class="windspeedtext"></p>
+
+            <p class="humidity"></p>
+
+           </div>
+       
+
         </div>
-        <div class="fivedayforecast">
-            <p class="title">fivedayforecast</p>
-        </div>
+
+
+        
+
 
     </div>
 
 
+
+    <div class="fivedayforecast">
+        <div class="dayholder">
+            <h5 class="forecastday">fivedayforecast</h5>
+<p class="weatherdescription"> </p>
+<p class="forecasttemp">21</p>
+<img class="forecastimage" src="../src/images/drone-1-svgrepo-com.svg" alt="">
+        </div>
+
+        <div class="dayholder">
+            <h5 class="forecastday">fivedayforecast</h5>
+            <p class="weatherdescription">  </p>
+<p class="forecasttemp">21</p>
+<img class="forecastimage" src="../src/images/drone-1-svgrepo-com.svg" alt="">
+
+        </div>
+        <div class="dayholder">
+            <h5 class="forecastday">fivedayforecast</h5>
+            <p class="weatherdescription">  </p>
+<p class="forecasttemp">21</p>
+<img class="forecastimage" src="../src/images/drone-1-svgrepo-com.svg" alt="">
+
+        </div>
+        <div class="dayholder">
+            <h5 class="forecastday">fivedayforecast</h5>
+            <p class="weatherdescription">  </p>
+<p class="forecasttemp">21</p>
+<img class="forecastimage" src="../src/images/drone-1-svgrepo-com.svg" alt="">
+
+        </div>
+        <div class="dayholder">
+            <h5 class="forecastday">fivedayforecast</h5>
+            <p class="weatherdescription">  </p>
+<p class="forecasttemp">21</p>
+<img class="forecastimage" src="../src/images/drone-1-svgrepo-com.svg" alt="">
+
+        </div>
+    </div>
+
+
+
+    <form class="searchform" action="">
+        <div class="labelflex">      <label for="searcher">City and country</label></div>
+              <input type="text" name="" id="searcher">
+              <select name="" id="">
+                  <option value="CA">CA</option>
+                  <option value="US">US</option>
+              </select>
+              <button type="submit" id="submitbutton">Check</button>
+          </form>
+
+</div>
 </body>
 </html>
