@@ -192,3 +192,30 @@ catch(err) {
 
 
 importWeather('search', 'metric', 'stratford', 'CA')
+
+
+
+//function below for loading window!
+
+function loadEvent() {
+
+
+    window.addEventListener('load', (e) => {
+        
+
+
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+}
+loadEvent()

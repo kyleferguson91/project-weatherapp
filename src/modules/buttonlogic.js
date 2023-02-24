@@ -14,9 +14,20 @@ export async function addSearchButtonLogic() {
        
         e.preventDefault()
 
+        // determine input is valid then trigger loading!
 
-        const input = document.querySelector('#searcher')
-        const country = document.querySelectorAll('option')
+
+  const input = document.querySelector('#searcher')
+  const country = document.querySelectorAll('option')
+  const modal = document.querySelector('.modal')
+
+ 
+
+  modal.classList.remove('none')
+
+  
+  
+
         let selectedcountry = 'CA';
 
         country.forEach((elem,ind,arr) => {
@@ -45,7 +56,9 @@ export async function addSearchButtonLogic() {
        //import weather to update the dom accordingly!
        input.value = ""
   
-     
+     // remove the loading window
+       
+             modal.classList.add('none')
     })
 
 
