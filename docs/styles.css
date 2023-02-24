@@ -457,7 +457,9 @@ flex-basis: 50%;
     margin: 0px;
 }
 .todaybox {
-    padding: 0;
+    padding: 1rem;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 }
