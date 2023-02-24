@@ -442,6 +442,7 @@ height: 100%;
 
 .fivedayforecast{
 flex-flow: column;
+background-color: rgba(0, 0, 0, 0.5);
 }
 
 .unitcontainer {
