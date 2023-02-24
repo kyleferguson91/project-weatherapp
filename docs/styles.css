@@ -82,6 +82,7 @@ background-size: cover;
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(102px);
+    -webkit-backdrop-filter: blur(102px);
     height: auto;
     width: auto;
     
@@ -169,6 +170,7 @@ grid-template-rows: 1fr 2fr;
     justify-self: center;
     margin-top: 1rem;
     backdrop-filter: blur(102px);
+    -webkit-backdrop-filter: blur(102px);
     justify-items: center;
 }
 
@@ -259,7 +261,7 @@ grid-template-columns: auto auto auto;
   
     border-radius: 20px;
     backdrop-filter: blur(102px);
-
+    -webkit-backdrop-filter: blur(102px);
     
 }
 
