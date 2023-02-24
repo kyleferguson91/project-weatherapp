@@ -379,6 +379,7 @@ grid-template-columns: auto auto auto;
 .date {
     font-size: 1.0rem;
     align-self: center;
+    margin-right: .51rem;
 
 
 }
@@ -439,7 +440,13 @@ height: 100%;
     width: 100%;
 }
 .detailbox {
+grid-template-columns: repeat(1, 1fr);
+}
 
+.infobox {
+    align-content: flex-end;
+    justify-content: start;
+    width: 80%; 
 }
 
 
