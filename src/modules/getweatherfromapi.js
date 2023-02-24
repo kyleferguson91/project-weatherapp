@@ -15,8 +15,8 @@ let units = 'metric'
 
 
 
-export async function getWeather(type, ...args) {
-
+export async function getWeather(type, units, ...args) {
+//console.log(units, 1298371928379281)
 // the function will take the type, based on the type it will make the appropriate api call from api object
 const apiObject = {
     search:`https://api.openweathermap.org/data/2.5/weather?q=${args[0]},${args[1]}&appid=${key}&units=${units}`,

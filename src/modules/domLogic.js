@@ -6,10 +6,10 @@ import windspeedimage from '../images/wind-svgrepo-com.svg'
 import lowtempimage from '../images/temp-cold-svgrepo-com.svg'
 import feelslikeimage from '../images/temperature-feels-like-svgrepo-com.svg'
 
-
+let speed = 'm/s'
 
 // this function will run on the main page render, rerender and load!
-export async function initialRender(weatherObject, forecastObject) {
+export async function initialRender(weatherObject, forecastObject, units) {
 
 // set background image to image
 const body = document.querySelector('body')
@@ -33,7 +33,7 @@ thermometer.src = thermometerimage
 
 // set the temp to the temp!
 const temp = document.querySelector('.currenttemp')
-temp.textContent = weatherObject.temp
+temp.textContent = weatherObject.temp + '°'
 
 
 
@@ -47,13 +47,35 @@ humidity.textContent = weatherObject.humidity
 
 
 
+
+
+console.log(units,92389047982374234)
+
+    
+const slider = document.querySelector('.slider')
+// set the slider position based on units
+
+if (units == 'imperial') {
+    speed = 'mi/hr'
+slider.classList.add('moveselector')
+
+}
+else if (units == "metric") {
+    speed = 'm/s'
+slider.classList.remove('moveselector')
+
+}
+
+
+
+
 //set wind speed image
 const windspeed = document.querySelector('.windspeed')
 windspeed.src = windspeedimage
 
 // set the windspeed
 const windspeedtext = document.querySelector('.windspeedtext')
-windspeedtext.textContent = weatherObject.windspeed
+windspeedtext.textContent = weatherObject.windspeed + ' ' + speed
 
 
 
@@ -63,17 +85,17 @@ lowtemp.src = lowtempimage
 
 // set the lowtemp
 const lowtemptext = document.querySelector('.lowtemptext')
-lowtemptext.textContent = weatherObject.templow
+lowtemptext.textContent = weatherObject.templow + '°'
 
 
 
 //set feelslike image
 const feelslike = document.querySelector('.feelslike')
-feelslike.src = feelslikeimage
+feelslike.src = feelslikeimage 
 
 // set the feelslike
 const feelsliketext = document.querySelector('.feelsliketext')
-feelsliketext.textContent = weatherObject.tempfeelslike
+feelsliketext.textContent = weatherObject.tempfeelslike + '°'
 
 
 
@@ -95,9 +117,6 @@ descriptionofweather.textContent = weatherObject.weatherdescription
 
 //call function to build the 5 day forecast logic!
 forecastLogic(forecastObject)
-
-
-
 
 }
 
@@ -147,7 +166,7 @@ let daystotake = []
 
 let i = 1
 while (i < 6) {
-    console.log()
+   // console.log()
     forecastdays[i-1].textContent = dates.format(new Date(dates.addDays(new Date(), i)), 'EEEE')
     daystotake.push(dates.format(new Date(dates.addDays(new Date(), i)), 'EEEE'))
     i++
@@ -199,7 +218,7 @@ daystotake.splice(daystotake.indexOf(dates.format(new Date(object.dt*1000), 'EEE
 
 
 }
-console.log(forecasttemps, forecasticons, forecastdescriptions)
+//console.log(forecasttemps, forecasticons, forecastdescriptions)
 
 
 // now we update the forecast with this info
@@ -212,12 +231,99 @@ const forecastimages = document.querySelectorAll('.forecastimage')
 // we want to supply the array values to each of the description values at a 1-1 ratio
 
 for (let index in forecastdescriptions) {
-    console.log(index)
+  //  console.log(index)
 descriptions[index].textContent = forecastdescriptions[index]
-forecasttemp[index].textContent = forecasttemps[index]
+forecasttemp[index].textContent = forecasttemps[index] + '°'
 forecastimages[index].src =  `http://openweathermap.org/img/wn/${forecasticons[index]}@2x.png`
 
 }
+
+
+
+
+}
+
+
+
+export async function changeUnit(unit) {
+
+// we want to call the API with this function to get new weather info
+// we only want to update the units for each value..
+// if the unit is metric do one thing, if imperial do another
+
+
+const temp = document.querySelector('.currenttemp')
+const forecasttemps = document.querySelectorAll('.forecasttemp')
+const windspeedtext = document.querySelector('.windspeedtext')
+// set the lowtemp
+const lowtemptext = document.querySelector('.lowtemptext')
+// set the feelslike
+const feelsliketext = document.querySelector('.feelsliketext')
+
+
+
+
+console.log(windspeedtext.textContent)
+
+
+function converttoC(value) {
+    return (value - 32) * (5/9)
+ }
+function converttoF(value) {
+    return (value*(9/5)) + 32
+}
+
+function converttomihr(value) {
+    return value*2.237
+}
+function converttoms(value) {
+    return value/2.237
+}
+
+
+
+
+if (unit == 'metric') {
+// assume it was imperial before..
+// all the same except windspeed.
+temp.textContent =  converttoC(parseFloat(temp.textContent)).toFixed(2)+ '°'
+speed = 'm/s'
+windspeedtext.textContent = converttoms(parseFloat(windspeedtext.textContent)).toFixed(2) + ' ' + speed
+lowtemptext.textContent = converttoC(parseFloat(lowtemptext.textContent)).toFixed(2)+ '°'
+feelsliketext.textContent = converttoC(parseFloat(feelsliketext.textContent)).toFixed(2)+ '°'
+
+
+
+
+forecasttemps.forEach((elem,ind,arr) => {
+    elem.textContent = converttoC(parseFloat(elem.textContent)).toFixed(2) + '°'
+   
+  })
+}
+
+else if (unit == 'imperial') {
+    // assume it was metric before
+    // all the same except windspeed
+    temp.textContent =  converttoF(parseFloat(temp.textContent)).toFixed(2)+ '°'
+    speed = 'mi/hr'
+    windspeedtext.textContent = converttomihr(parseFloat(windspeedtext.textContent)).toFixed(2) + ' ' + speed
+    lowtemptext.textContent = converttoF(parseFloat(lowtemptext.textContent)).toFixed(2)+ '°'
+    feelsliketext.textContent = converttoF(parseFloat(feelsliketext.textContent)).toFixed(2)+ '°'
+
+
+    forecasttemps.forEach((elem,ind,arr) => {
+        elem.textContent = converttoF(parseFloat(elem.textContent)).toFixed(2) + '°'
+   
+      })
+
+}
+
+
+
+
+
+
+
 
 
 

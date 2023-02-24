@@ -50,7 +50,7 @@ addEvents()
 // this function will then extract that data into variables
 // once we have those variables, we can call dom logic, etc
 
-export async function importWeather(type, ...args) {
+export async function importWeather(type, units, ...args) {
 try {
     
 
@@ -60,7 +60,7 @@ let weather = await import('./modules/getweatherfromapi.js')
 // once we have module can run the get weather function with the relevant type and the params..
 // since it is async we must await the response
 
-let weatherResponse = await weather.getWeather(type, ...args)
+let weatherResponse = await weather.getWeather(type, units, ...args)
 
 // it returns a resolved promise with the response of the weather object
 // log the object which can be filtered for the data we want
@@ -70,7 +70,7 @@ let weatherResponse = await weather.getWeather(type, ...args)
 // create the data we need
 // use an object so its easy!
 
-let weatherObject = 
+ let weatherObject = 
 {
 
 city:  weatherResponse.name,
@@ -138,13 +138,13 @@ else if (weatherResponse.weather.length > 1) {
 }
 
 //icon now holds the correct code for the image we need!
-console.log(weatherResponse)
-console.log(weatherObject)
+//console.log(weatherResponse)
+//console.log(weatherObject)
 
 
 // log the data here
 // conditions and icons log
-console.log('conds icons', weatherObject.today)
+//console.log('conds icons', weatherObject.today)
 
 
 
@@ -156,8 +156,8 @@ const forecast = await weather.getForecast(weatherObject.lat,weatherObject.lon)
 
 
 
-console.log('FIVE DAY FORECAST BELOW')
-console.log(forecast)
+//console.log('FIVE DAY FORECAST BELOW')
+//console.log(forecast)
 let forecastObject = forecast.list
 
 
@@ -170,14 +170,14 @@ let forecastObject = forecast.list
 
 const dom = await import('../src/modules/domLogic.js')
 
-dom.initialRender(weatherObject, forecastObject)
+dom.initialRender(weatherObject, forecastObject, units)
 
 
 }
 
 // catch an error in importWeather async function
 catch(err) {
-    console.log('error in importWeather', err)
+ //   console.log('error in importWeather', err)
 }
 
 
@@ -191,10 +191,4 @@ catch(err) {
 }
 
 
-console.log('RUN FUNCTION TO GET WEATHER AND POST FORECAST AS WELL')
-//importWeather('latlong', '43.3668', '-80.9497')
-importWeather('search', 'stratford', 'CA')
-// importWeather('postal', 'N4Z', 'CA')
-
-
-// we will run import weather when we need weather!
+importWeather('search', 'metric', 'stratford', 'CA')
