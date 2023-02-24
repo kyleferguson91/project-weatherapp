@@ -266,7 +266,9 @@ grid-template-columns: auto auto auto;
 }
 
 .modal {
-    display:    block;
+    display:    flex;
+    
+    justify-content: center;
     position:   fixed;
     z-index:    1000;
     top:        25%;
@@ -445,12 +447,12 @@ height: 100%;
 .fivedayforecast{
 flex-flow: row;
 flex-wrap: wrap;
-
+backdrop-filter: blur(0);
 }
 
 .todaysweather {
-
     backdrop-filter: blur(0);
+
 }
 
 .dayholder {
