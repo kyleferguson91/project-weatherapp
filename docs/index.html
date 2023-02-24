@@ -9,6 +9,31 @@
     <script type='' src="./main.js" ></script>
 </head>
 <body>
-    <div class="weatherbox"></div>
+            
+    <form class="searchform" action="">
+        <label for="searcher">Enter a city and country!</label>
+        <input type="text" name="" id="searcher">
+        <select name="" id="">
+            <option value="CA">CA</option>
+            <option value="US">US</option>
+        </select>
+        <button type="submit" id="submitbutton">Submit</button>
+    </form>
+
+
+    <div class="weatherbox">
+        <div class="todaysweather">
+            <p class="title">Today's Weather</p>
+            <p class="typeweather"></p>
+            <p class="city"></p>
+            <p class="date">Date</p>
+        </div>
+        <div class="fivedayforecast">
+            <p class="title">fivedayforecast</p>
+        </div>
+
+    </div>
+
+
 </body>
 </html>
