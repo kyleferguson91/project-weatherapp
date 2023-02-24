@@ -80,7 +80,7 @@ background-size: cover;
     background-color: red;
     padding: 1rem;
     border-radius: 20px;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(102px);
     height: auto;
     width: auto;
@@ -139,7 +139,7 @@ border-radius: 20px;
     width: 80%;
     height: auto;
 
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     display: flex;
     flex-flow: column;
